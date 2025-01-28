@@ -13,6 +13,14 @@
     }
   }
   
+  @layer base {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
   @theme {
     --color-primary: #1f1f1f;
     --color-secondary: #d4f08d;

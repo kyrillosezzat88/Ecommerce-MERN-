@@ -8,7 +8,7 @@ const Button = ({ text, className, onClick, disabled }: TButton) => {
   return (
     <button
       onClick={onClick}
-      className={` px-4 py-2 rounded-sm mt-8 ${className}`}
+      className={` px-4 py-2 rounded-sm ${className}`}
       disabled={disabled}
     >
       {text}
