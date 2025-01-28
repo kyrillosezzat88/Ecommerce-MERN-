@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "./button.css";
+
 @utility container {
     margin-inline: auto;
     padding-inline: 1rem;
@@ -9,4 +11,9 @@
     @media (width >= 1400px){
         max-width:1400px
     }
+  }
+  
+  @theme {
+    --color-primary: #1f1f1f;
+    --color-secondary: #d4f08d;
   }

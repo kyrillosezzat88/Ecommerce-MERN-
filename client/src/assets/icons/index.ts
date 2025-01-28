@@ -1,0 +1,15 @@
+export { default as CartIcon } from "./Cart.svg?react";
+export { default as SearchIcon } from "./search.svg?react";
+export { default as WishlistIcon } from "./heart.svg?react";
+export { default as UserIcon } from "./user.svg?react";
+export { default as MenuIcon } from "./menu.svg?react";
+export { default as HeartIcon } from "./heart.svg?react";
+export { default as RepeatIcon } from "./repeat.svg?react";
+export { default as HeartSolidIcon } from "./heart-solid.svg?react";
+export { default as StarIcon } from "./star.svg?react";
+export { default as StarSolidIcon } from "./star-solid.svg?react";
+export { default as ShareIcon } from "./share.svg?react";
+export { default as PhoneCellingIcon } from "./phone-calling.svg?react";
+export { default as ReturnIcon } from "./return-box.svg?react";
+export { default as GuaranteeIcon } from "./correct.svg?react";
+export { default as ShippingIcon } from "./shipping.svg?react";

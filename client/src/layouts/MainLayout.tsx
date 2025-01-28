@@ -1,13 +1,11 @@
-import { Footer, Header } from "@components";
+import { Footer, Header } from "@components/common";
 import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
   return (
     <>
       <Header />
-      <div className="container">
-        <Outlet />
-      </div>
+      <Outlet />
       <Footer />
     </>
   );

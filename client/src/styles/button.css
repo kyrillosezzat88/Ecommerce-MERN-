@@ -1,0 +1,3 @@
+.btn-primary{
+    @apply bg-primary hover:bg-secondary transition-all  text-white hover:text-primary cursor-pointer; 
+}

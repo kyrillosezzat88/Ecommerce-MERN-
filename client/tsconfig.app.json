@@ -19,7 +19,7 @@
     "baseUrl": ".",
     "paths": {
       "@assets/*": ["src/assets/*"],
-      "@components": ["src/components/index"],
+      "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
       "@pages/*": ["src/pages/*"],
       "@routes/*": ["src/routes/*"],
@@ -29,7 +29,9 @@
       "@layouts/*": ["src/layouts/*"],
       "@utils/*": ["src/utils/*"],
       "@services/*": ["src/services/*"],
-      "@validations": ["src/validations/index"]
+      "@validations": ["src/validations/index"],
+      "@icons": ["src/assets/icons/index"],
+      "@images": ["src/assets/images"]
     },
     /* Linting */
     "strict": true,
