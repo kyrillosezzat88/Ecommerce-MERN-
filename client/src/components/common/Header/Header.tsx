@@ -7,21 +7,22 @@ import {
   WishlistIcon,
   CartIcon,
 } from "@assets/icons";
-import Drawer from "../drawer/Drawer";
 import { useState } from "react";
-import { MiniCart } from "@components/e-commerce";
+import { CartDrawer, WishlistDrawer } from "@components/e-commerce";
 const Header = () => {
   const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
+  const [isWishlistDrawerOpen, setIsWishlistDrawerOpen] = useState(false);
 
   return (
     <>
-      <Drawer
+      <CartDrawer
         isOpen={isCartDrawerOpen}
         setIsDrawerOpen={setIsCartDrawerOpen}
-        title="Shopping Cart"
-      >
-        <MiniCart />
-      </Drawer>
+      />
+      <WishlistDrawer
+        isOpen={isWishlistDrawerOpen}
+        setIsDrawerOpen={setIsWishlistDrawerOpen}
+      />
       <nav className="py-6 absolute inset-0 md:h-[74px] h-[56px] bg-transparent w-full">
         <div className="container">
           <div className="flex items-center justify-between">
@@ -49,7 +50,7 @@ const Header = () => {
             <div className="flex gap-3 items-center [&>svg]:cursor-pointer">
               <SearchIcon className="hidden md:block" />
               <UserIcon />
-              <WishlistIcon />
+              <WishlistIcon onClick={() => setIsWishlistDrawerOpen(true)} />
               <CartIcon onClick={() => setIsCartDrawerOpen(true)} />
             </div>
           </div>

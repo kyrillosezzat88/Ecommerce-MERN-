@@ -4,3 +4,7 @@
 .btn-secondary{
     @apply bg-secondary hover:bg-primary transition-all  text-black hover:text-white cursor-pointer; 
 }
+
+.btn-danger {
+    @apply bg-red-600 hover:bg-red-800 transition-all  text-white hover:text-red-100 cursor-pointer;
+}
