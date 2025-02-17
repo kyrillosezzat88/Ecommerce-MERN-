@@ -36,7 +36,7 @@ const Drawer = ({
 
       {/* Drawer Content */}
       <div
-        className={`fixed top-0 h-full transition-transform duration-300 right-0 w-1/3 ${
+        className={`fixed top-0 h-full transition-transform duration-300 right-0 w-4/5 md:w-1/3 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"

@@ -4,22 +4,31 @@ type TQuantity = {
   quantity: number;
   setQuantity: (value: number | ((prev: number) => number)) => void;
   className?: string;
+  quantityHandler: (type: string, quantity?: number) => void;
 };
 
-const Quantity = ({ quantity, setQuantity, className }: TQuantity) => {
+const Quantity = ({
+  quantity,
+  setQuantity,
+  className,
+  quantityHandler,
+}: TQuantity) => {
   const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value, 10);
     if (!isNaN(value) && value >= 0) {
       setQuantity(value);
+      quantityHandler(_, value);
     }
   };
 
   const incrementQuantity = () => {
     setQuantity((prev) => prev + 1);
+    quantityHandler("increment");
   };
 
   const decrementQuantity = () => {
     setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
+    quantityHandler("decrement");
   };
 
   const buttonClass =

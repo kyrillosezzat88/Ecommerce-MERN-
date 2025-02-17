@@ -9,10 +9,13 @@ import {
 } from "@assets/icons";
 import { useState } from "react";
 import { CartDrawer, WishlistDrawer } from "@components/e-commerce";
+import { useAppSelector } from "@store/hooks";
+import HeaderCounter from "@components/e-commerce/headerCounter/HeaderCounter";
+import { getCartTotalQuantitySelector } from "@store/cart/selectors";
 const Header = () => {
   const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
   const [isWishlistDrawerOpen, setIsWishlistDrawerOpen] = useState(false);
-
+  const totalCartQuantity = useAppSelector(getCartTotalQuantitySelector);
   return (
     <>
       <CartDrawer
@@ -51,7 +54,11 @@ const Header = () => {
               <SearchIcon className="hidden md:block" />
               <UserIcon />
               <WishlistIcon onClick={() => setIsWishlistDrawerOpen(true)} />
-              <CartIcon onClick={() => setIsCartDrawerOpen(true)} />
+              <HeaderCounter
+                icon={<CartIcon />}
+                counter={totalCartQuantity}
+                onClick={() => setIsCartDrawerOpen(true)}
+              />
             </div>
           </div>
         </div>
