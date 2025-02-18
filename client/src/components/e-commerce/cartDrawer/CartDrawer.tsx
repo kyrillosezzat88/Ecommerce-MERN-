@@ -17,7 +17,9 @@ const CartDrawer = ({ isOpen, setIsDrawerOpen }: TCartDrawer) => {
   );
 
   useEffect(() => {
-    dispatch(getProductsFullInfo());
+    if (isOpen) {
+      dispatch(getProductsFullInfo());
+    }
   }, [dispatch, isOpen]);
 
   const productList = useMemo(() => {
@@ -32,7 +34,7 @@ const CartDrawer = ({ isOpen, setIsDrawerOpen }: TCartDrawer) => {
       setIsDrawerOpen={setIsDrawerOpen}
       title="Shopping Cart"
     >
-      <Loading status={loading} error={error}>
+      <Loading status={loading} error={error} type="miniProduct">
         {productList.length ? (
           <div className="flex flex-col gap-4">
             {productList}

@@ -25,7 +25,7 @@ const Products = () => {
         tabHandler={tabHandler}
         activeTab={activeTab}
       />
-      <Loading status={loading} error={error}>
+      <Loading status={loading} error={error} type="product">
         <GridList
           records={products}
           renderItems={(record) => <Product {...record} />}
