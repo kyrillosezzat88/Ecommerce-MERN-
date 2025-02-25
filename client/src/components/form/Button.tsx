@@ -15,7 +15,7 @@ const Button = ({ text, className, onClick, disabled, loading }: TButton) => {
       disabled={disabled || loading}
     >
       {loading ? (
-        <div className="flex text-white text-sm gap-2">
+        <div className="flex text-white text-sm gap-2 justify-center items-center">
           <div className="border-gray-300 h-5 w-5 animate-spin rounded-full border-2 border-t-primary" />
           loading...
         </div>

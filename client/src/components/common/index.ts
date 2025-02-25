@@ -4,3 +4,4 @@ export { default as HeroSlider } from "./slider/HeroSlider";
 export { default as Drawer } from "./drawer/Drawer";
 export { default as Heading } from "./Heading/Heading";
 export { default as Tabs } from "./tabs/Tabs";
+export { default as Modal } from "./modal/Modal";
