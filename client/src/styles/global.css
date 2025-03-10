@@ -26,3 +26,7 @@
     --color-secondary: #d4f08d;
     --color-Ivory: #f7f4ef
   }
+
+  .footer-title{
+    @apply  font-bold mb-3 uppercase;
+  }

@@ -17,3 +17,7 @@ export { default as Login } from "./login/Login";
 export { default as Register } from "./register/Register";
 
 export { default as Search } from "./search/Search";
+
+//home components
+export { default as HomeBanners } from "./homeBanners/HomeBanners";
+export { default as Features } from "./features/Features";

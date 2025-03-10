@@ -40,7 +40,7 @@ const Modal = ({
   return (
     <div className="fixed inset-0 flex justify-center items-center z-40 before:bg-black/20 before:w-full before:h-full before:fixed before:z-10">
       <div
-        className={`${getWidth[size]} bg-white ${height} rounded-md shadow z-30 ${classes}`}
+        className={`w-[90%] md:${getWidth[size]} bg-white ${height} rounded-md shadow z-30 ${classes}`}
         onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
       >
         {title && (

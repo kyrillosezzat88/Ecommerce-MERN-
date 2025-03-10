@@ -5,3 +5,4 @@ export { default as Drawer } from "./drawer/Drawer";
 export { default as Heading } from "./Heading/Heading";
 export { default as Tabs } from "./tabs/Tabs";
 export { default as Modal } from "./modal/Modal";
+export { default as Banner } from "./banner/Banner";

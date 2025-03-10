@@ -1,5 +1,10 @@
 import { HeroSlider } from "@components/common";
-import { Categories, Products } from "@components/e-commerce";
+import {
+  Categories,
+  Features,
+  HomeBanners,
+  Products,
+} from "@components/e-commerce";
 
 const Home = () => {
   return (
@@ -8,6 +13,10 @@ const Home = () => {
       <div className="container">
         <Categories />
         <Products />
+      </div>
+      <HomeBanners />
+      <div className="container">
+        <Features />
       </div>
     </section>
   );
