@@ -22,8 +22,8 @@ const SubTotal = ({ products }: TCartSubTotal) => {
         <span className="font-semibold">SubTotal</span>
         <span>{cartSubtotal.toFixed(2)} EG</span>
       </div>
-      <Button text="View Cart" className="btn-primary" />
-      <Button text="Checkout" className="btn-secondary" />
+      <Button text="View Cart" className="btn btn-primary" />
+      <Button text="Checkout" className="btn btn-secondary" />
     </>
   );
 };

@@ -44,7 +44,7 @@ const HeroSlider = () => {
                   {slide.title}
                 </h1>
                 <NavLink to={slide.url}>
-                  <Button text="Shop Now" className="btn-primary mt-8" />
+                  <Button text="Shop Now" className="btn btn-primary mt-8" />
                 </NavLink>
               </div>
             </div>

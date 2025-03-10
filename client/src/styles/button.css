@@ -1,10 +1,16 @@
+.btn{
+    @apply px-4 py-2 rounded-sm cursor-pointer transition-all flex justify-center items-center;
+}
 .btn-primary{
-    @apply bg-primary hover:bg-secondary transition-all  text-white hover:text-primary cursor-pointer; 
+    @apply bg-primary hover:bg-secondary text-white hover:text-primary; 
 }
 .btn-secondary{
-    @apply bg-secondary hover:bg-primary transition-all  text-black hover:text-white cursor-pointer; 
+    @apply bg-secondary hover:bg-primary text-black hover:text-white; 
 }
 
 .btn-danger {
-    @apply bg-red-600 hover:bg-red-800 transition-all  text-white hover:text-red-100 cursor-pointer;
+    @apply bg-red-600 hover:bg-red-800 text-white hover:text-red-100;
+}
+.btn-circle{
+    @apply rounded-full shadow cursor-pointer;
 }

@@ -12,10 +12,20 @@ import { CartDrawer, WishlistDrawer } from "@components/e-commerce";
 import { useAppSelector } from "@store/hooks";
 import HeaderCounter from "@components/e-commerce/headerCounter/HeaderCounter";
 import { getCartTotalQuantitySelector } from "@store/cart/selectors";
+import AuthModal from "@components/e-commerce/modals/AuthModal";
+import Modal from "../modal/Modal";
 const Header = () => {
   const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false);
   const [isWishlistDrawerOpen, setIsWishlistDrawerOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(true);
   const totalCartQuantity = useAppSelector(getCartTotalQuantitySelector);
+  const wishlistProductsCount = useAppSelector(
+    (state) => state.wishlist.products
+  );
+  const AuthModalHandler = (e) => {
+    e.stopPropagation();
+    setIsAuthModalOpen(true);
+  };
   return (
     <>
       <CartDrawer
@@ -25,6 +35,13 @@ const Header = () => {
       <WishlistDrawer
         isOpen={isWishlistDrawerOpen}
         setIsDrawerOpen={setIsWishlistDrawerOpen}
+      />
+      <Modal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen((prev) => !prev)}
+        ModalContent={<AuthModal />}
+        size="sm"
+        height="auto"
       />
       <nav className="py-6 absolute inset-0 md:h-[74px] h-[56px] bg-transparent w-full">
         <div className="container">
@@ -52,8 +69,12 @@ const Header = () => {
             </div>
             <div className="flex gap-3 items-center [&>svg]:cursor-pointer">
               <SearchIcon className="hidden md:block" />
-              <UserIcon />
-              <WishlistIcon onClick={() => setIsWishlistDrawerOpen(true)} />
+              <UserIcon onClick={AuthModalHandler} />
+              <HeaderCounter
+                icon={<WishlistIcon />}
+                counter={wishlistProductsCount.length}
+                onClick={() => setIsWishlistDrawerOpen(true)}
+              />
               <HeaderCounter
                 icon={<CartIcon />}
                 counter={totalCartQuantity}

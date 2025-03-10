@@ -5,15 +5,19 @@ import { memo } from "react";
 import { NavLink } from "react-router-dom";
 import ProductModal from "../modals/ProductModal";
 import useProduct from "@hooks/useProduct";
+import { HeartIcon, HeartSolidIcon, RepeatIcon } from "@assets/icons";
 
 const Product = memo((product: TProduct) => {
-  const { id, name, mainImage, price, gallery } = product;
+  const { id, name, mainImage, price, gallery, isLiked } = product;
   const {
     loading,
     openProductModal,
     addToCartHandler,
     openProductModalHandler,
     setOpenProductModal,
+    addToWishlistHandler,
+    wishlistLoading,
+    wishlistError,
   } = useProduct();
 
   return (
@@ -22,6 +26,7 @@ const Product = memo((product: TProduct) => {
         isOpen={openProductModal}
         onClose={() => setOpenProductModal((prev) => !prev)}
         ModalContent={<ProductModal {...product} />}
+        size="lg"
       />
       <div className="flex flex-col gap-3">
         <div className="relative cursor-pointer group overflow-hidden rounded-2xl">
@@ -45,41 +50,28 @@ const Product = memo((product: TProduct) => {
           <div className="flex gap-3 absolute transition-all duration-300 -bottom-20 group-hover:bottom-3 items-center justify-center w-full">
             <Button
               text="Add To Cart"
-              className="btn-secondary rounded-full"
+              className="btn btn-secondary rounded-full"
               onClick={() => addToCartHandler(id, 1, name)}
               loading={loading}
             />
             <Button
               text="Quick view"
-              className="btn-secondary rounded-full"
+              className="btn btn-secondary rounded-full"
               onClick={openProductModalHandler}
             />
           </div>
           <div className="flex flex-col gap-2 absolute -right-10 top-3 transition-all duration-300 group-hover:right-3">
-            <button
-              className="btn btn-circle btn-sm [&>svg]:w-4"
-              // onClick={wishlistToggleHandler}
-              // disabled={isAddToWishlistDisabled}
-            >
-              {/* {isWishLoading ? (
-                  <span className="loading loading-spinner loading-xs"></span>
-                ) : isLiked ? (
-                  <HeartSolidIcon />
-                ) : (
-                  <HeartIcon />
-                )} */}
-            </button>
-            <button
-              className="btn btn-circle btn-sm [&>svg]:w-4"
-              // onClick={compareHandler}
-              // disabled={isAddToCompareDisabled}
-            >
-              {/* {isCompareLoading ? (
-              <span className="loading loading-spinner loading-xs"></span>
-              ) : (
-              <RepeatIcon />
-            )} */}
-            </button>
+            <Button
+              text={isLiked ? <HeartSolidIcon /> : <HeartIcon />}
+              className="btn-circle text-sm [&>svg]:w-4 w-auto px-2 py-1"
+              onClick={() => addToWishlistHandler(id, name)}
+              loading={wishlistLoading === "pending"}
+              loadingText={false}
+            />
+            <Button
+              text={<RepeatIcon />}
+              className="btn-circle text-sm [&>svg]:w-4 w-auto px-2 py-1"
+            />
           </div>
         </div>
         <NavLink to={`/products/${id}`}>

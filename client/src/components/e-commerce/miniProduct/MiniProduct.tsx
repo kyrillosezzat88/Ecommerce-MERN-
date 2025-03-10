@@ -4,13 +4,15 @@ import { Button } from "@components/form";
 import { TProduct } from "@types";
 import { useAppDispatch } from "@store/hooks";
 import { cartItemChangeQuantity, cartItemRemove } from "@store/cart/CartSlice";
+import { actWishlistToggle } from "@store/wishlist/wishlistSlice";
 
 type TMiniProduct = {
-  type?: "cart" | "wishlist";
-  data?: TProduct; // Make data optional
+  type: "cart" | "wishlist";
+  data: TProduct; // Make data optional
 };
 
 const MiniProduct = ({ type, data }: TMiniProduct) => {
+  const { id, name, price } = data;
   const [quantity, setQuantity] = useState(0);
   const dispatch = useAppDispatch();
 
@@ -22,16 +24,14 @@ const MiniProduct = ({ type, data }: TMiniProduct) => {
 
   const quantityHandler = useCallback(
     (type: string, quantity: number = 1) => {
-      if (data) {
-        dispatch(cartItemChangeQuantity({ type, id: data.id, quantity }));
-      }
+      dispatch(cartItemChangeQuantity({ type, id, quantity }));
     },
-    [dispatch, data]
+    [dispatch, id]
   );
 
   const renderPriceInfo = () => (
     <p>
-      Price: <span className="font-medium">{data?.price}€</span>
+      Price: <span className="font-medium">{price}€</span>
     </p>
   );
 
@@ -48,12 +48,12 @@ const MiniProduct = ({ type, data }: TMiniProduct) => {
       {renderPriceInfo()}
       <p>
         Total Price:
-        <span className="font-medium">{quantity * (data?.price || 0)}€</span>
+        <span className="font-medium">{quantity * (price || 0)}€</span>
       </p>
       <Button
         text="Remove"
-        className="btn-danger mt-4 w-full"
-        onClick={() => dispatch(cartItemRemove(data?.id))}
+        className="btn btn-danger mt-4 w-full"
+        onClick={() => dispatch(cartItemRemove(id))}
       />
     </div>
   );
@@ -61,11 +61,14 @@ const MiniProduct = ({ type, data }: TMiniProduct) => {
   const renderWishlistDetails = () => (
     <>
       {renderPriceInfo()}
-      <Button text="Add To Cart" className="btn-primary mt-4" />
+      <Button text="Add To Cart" className="btn btn-primary mt-4" />
       <Button
         text="Remove"
-        className="btn-danger"
-        onClick={() => dispatch(cartItemRemove(data?.id))}
+        className="btn btn-danger"
+        onClick={() => {
+          console.log("clicked");
+          dispatch(actWishlistToggle({ id, name }));
+        }}
       />
     </>
   );

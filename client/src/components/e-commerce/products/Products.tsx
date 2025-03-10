@@ -11,10 +11,21 @@ const Products = () => {
   const { products, error, loading } = useAppSelector(
     (state) => state.products
   );
+  const cartItems = useAppSelector((state) => state.cart.items);
+  const wishlistItemsId = useAppSelector((state) => state.wishlist.products);
   const [activeTab, setActiveTab] = useState("men");
+
+  const productsFullInfo = products.map((pro) => ({
+    ...pro,
+    quantity: pro.id ? cartItems[pro.id] : 0,
+    isLiked: wishlistItemsId.includes(pro.id),
+    isAuthenticated: false,
+  }));
+
   useEffect(() => {
     dispatch(actGetProducts(activeTab));
   }, [activeTab, dispatch]);
+
   const tabHandler = useCallback((tab: string) => {
     setActiveTab(tab);
   }, []);
@@ -27,7 +38,7 @@ const Products = () => {
       />
       <Loading status={loading} error={error} type="product">
         <GridList
-          records={products}
+          records={productsFullInfo}
           renderItems={(record) => <Product {...record} />}
         />
       </Loading>
