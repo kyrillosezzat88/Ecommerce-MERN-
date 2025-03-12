@@ -1,4 +1,5 @@
 import { addToCart } from "@store/cart/CartSlice";
+import { actCompareToggle } from "@store/compare/compareSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actWishlistToggle } from "@store/wishlist/wishlistSlice";
 import { useState } from "react";
@@ -9,25 +10,46 @@ const useProduct = () => {
   const { loading: wishlistLoading, error: wishlistError } = useAppSelector(
     (state) => state.wishlist
   );
-  const [loading, setLoading] = useState(false);
+  const { items } = useAppSelector((state) => state.compare);
+
+  const [compareLoading, setCompareLoading] = useState(false);
+  const [cartLoading, setCartLoading] = useState(false);
   const [openProductModal, setOpenProductModal] = useState(false);
+
   const addToCartHandler = (id: number, quantity?: number, name?: string) => {
-    setLoading(true);
+    setCartLoading(true);
     setTimeout(() => {
       dispatch(addToCart({ id, quantity }));
-      setLoading(false);
+      setCartLoading(false);
       toast(`${name} Added to cart`, { type: "success" });
     }, 300);
   };
+
   const openProductModalHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setOpenProductModal((prev) => !prev);
   };
+
   const addToWishlistHandler = (id: number, name: string) => {
     dispatch(actWishlistToggle({ id, name }));
   };
+
+  const compareHandler = (id: number, name: string) => {
+    // compare logic here
+    setCompareLoading(true);
+    setTimeout(() => {
+      dispatch(actCompareToggle({ id, name }));
+      setCompareLoading(false);
+    }, 300);
+  };
+
+  // check if product is in compare list
+  const isProductInCompare = (id: number) => {
+    return items.includes(id);
+  };
+
   return {
-    loading,
+    cartLoading,
     openProductModal,
     setOpenProductModal,
     addToCartHandler,
@@ -35,6 +57,9 @@ const useProduct = () => {
     addToWishlistHandler,
     wishlistLoading,
     wishlistError,
+    compareHandler,
+    compareLoading,
+    isProductInCompare,
   };
 };
 

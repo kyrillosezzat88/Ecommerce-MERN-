@@ -5,12 +5,17 @@ import { memo } from "react";
 import { NavLink } from "react-router-dom";
 import ProductModal from "../modals/ProductModal";
 import useProduct from "@hooks/useProduct";
-import { HeartIcon, HeartSolidIcon, RepeatIcon } from "@assets/icons";
+import {
+  CheckedIcon,
+  HeartIcon,
+  HeartSolidIcon,
+  RepeatIcon,
+} from "@assets/icons";
 
 const Product = memo((product: TProduct) => {
   const { id, name, mainImage, price, gallery, isLiked } = product;
   const {
-    loading,
+    cartLoading,
     openProductModal,
     addToCartHandler,
     openProductModalHandler,
@@ -18,6 +23,9 @@ const Product = memo((product: TProduct) => {
     addToWishlistHandler,
     wishlistLoading,
     wishlistError,
+    compareHandler,
+    compareLoading,
+    isProductInCompare,
   } = useProduct();
 
   return (
@@ -52,7 +60,7 @@ const Product = memo((product: TProduct) => {
               text="Add To Cart"
               className="btn btn-secondary rounded-full"
               onClick={() => addToCartHandler(id, 1, name)}
-              loading={loading}
+              loading={cartLoading}
             />
             <Button
               text="Quick view"
@@ -69,8 +77,11 @@ const Product = memo((product: TProduct) => {
               loadingText={false}
             />
             <Button
-              text={<RepeatIcon />}
+              text={isProductInCompare(id) ? <CheckedIcon /> : <RepeatIcon />}
+              loading={compareLoading}
+              loadingText={false}
               className="btn-circle text-sm [&>svg]:w-4 w-auto px-2 py-1"
+              onClick={() => compareHandler(id, name)}
             />
           </div>
         </div>

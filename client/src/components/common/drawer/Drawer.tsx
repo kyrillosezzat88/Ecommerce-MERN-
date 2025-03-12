@@ -4,6 +4,7 @@ type TDrawerProps = {
   setIsDrawerOpen: (value: boolean) => void;
   children: React.ReactNode;
   title: string;
+  dir?: "rtl" | "ltr";
 };
 
 const Drawer = ({
@@ -12,6 +13,7 @@ const Drawer = ({
   onClose,
   children,
   title,
+  dir = "rtl",
 }: TDrawerProps) => {
   const closeDrawerHandler = () => {
     setIsDrawerOpen(false);
@@ -36,8 +38,14 @@ const Drawer = ({
 
       {/* Drawer Content */}
       <div
-        className={`fixed top-0 h-full transition-transform duration-300 right-0 w-4/5 md:w-1/3 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 h-full transition-transform duration-300 ${
+          dir === "rtl" ? "right-0" : "left-0"
+        }  w-4/5 md:w-1/3 ${
+          isOpen
+            ? "translate-x-0"
+            : dir === "rtl"
+            ? "translate-x-full"
+            : "-translate-x-full"
         }`}
         role="dialog"
         aria-modal="true"

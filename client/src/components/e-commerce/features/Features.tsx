@@ -35,8 +35,11 @@ const Features = () => {
   return (
     <div className="container">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-14">
-        {data.map((benefit) => (
-          <div className="flex flex-col items-center gap-3 text-center">
+        {data.map((benefit, idx) => (
+          <div
+            className="flex flex-col items-center gap-3 text-center"
+            key={idx}
+          >
             {benefit.icon}
             <h2 className=" font-bold">{benefit.title}</h2>
             <p className="text-sm">{benefit.description}</p>

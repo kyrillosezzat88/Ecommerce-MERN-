@@ -33,14 +33,14 @@ const Modal = ({
     };
   }, [isOpen, onClose]);
 
-  const getWidth = { sm: "w-1/4", md: "w-1/2", lg: "w-3/4" };
+  const getWidth = { sm: "md:w-1/4", md: "md:w-1/2", lg: "md:w-3/4" };
 
   if (!isOpen) return;
 
   return (
     <div className="fixed inset-0 flex justify-center items-center z-40 before:bg-black/20 before:w-full before:h-full before:fixed before:z-10">
       <div
-        className={`w-[90%] md:${getWidth[size]} bg-white ${height} rounded-md shadow z-30 ${classes}`}
+        className={`w-[90%] ${getWidth[size]} bg-white ${height} rounded-md shadow z-30 ${classes}`}
         onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
       >
         {title && (

@@ -3,14 +3,10 @@ import { MiniProduct, SubTotal } from "@components/e-commerce";
 import { Loading } from "@components/feedback";
 import { getProductsFullInfo } from "@store/cart/CartSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { TDrawer } from "@types";
 import { useEffect, useMemo } from "react";
 
-type TCartDrawer = {
-  isOpen: boolean;
-  setIsDrawerOpen: (value: boolean) => void;
-};
-
-const CartDrawer = ({ isOpen, setIsDrawerOpen }: TCartDrawer) => {
+const CartDrawer = ({ isOpen, setIsDrawerOpen }: TDrawer) => {
   const dispatch = useAppDispatch();
   const { loading, productsFullInfo, error } = useAppSelector(
     (state) => state.cart

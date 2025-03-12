@@ -3,29 +3,29 @@ import axiosErrorHandler from "@utils/axiosErrorHandler";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const actWishlistToggle = createAsyncThunk(
-  "wishlist/actWishlistToggle",
+const actCompareToggle = createAsyncThunk(
+  "compare/actCompareToggle",
   async (data: { id: number; name: string }, thunkApi) => {
     const { rejectWithValue } = thunkApi;
-
+    const { id, name } = data;
     try {
       const isRecordExist = await axios.get(
-        `/wishlist?userId=1&productId=${data.id}`
+        `/compares?userId=1&productId=${id}`
       );
       console.log({ isRecordExist });
       if (isRecordExist.data.length > 0) {
-        const wishlistId = isRecordExist.data[0].id;
-        await axios.delete(`/wishlist/${wishlistId}`);
-        toast(`${data.name} has been removed from wishlist successfully`, {
+        const CompareId = isRecordExist.data[0].id;
+        await axios.delete(`/compares/${CompareId}`);
+        toast(`${name} has been removed from compare successfully`, {
           type: "error",
         });
-        return { type: "remove", id: data.id };
+        return { type: "remove", id };
       } else {
-        await axios.post(`/wishlist`, { userId: 1, productId: data.id });
-        toast(`${data.name} has been added to wishlist successfully`, {
+        await axios.post(`/compares`, { userId: 1, productId: id });
+        toast(`${name} has been added to compare successfully`, {
           type: "success",
         });
-        return { type: "add", id: data.id };
+        return { type: "add", id };
       }
     } catch (error) {
       return rejectWithValue(axiosErrorHandler(error));
@@ -33,4 +33,4 @@ const actWishlistToggle = createAsyncThunk(
   }
 );
 
-export default actWishlistToggle;
+export default actCompareToggle;

@@ -13,3 +13,4 @@ export { default as PhoneCellingIcon } from "./phone-calling.svg?react";
 export { default as ReturnIcon } from "./return-box.svg?react";
 export { default as GuaranteeIcon } from "./correct.svg?react";
 export { default as ShippingIcon } from "./shipping.svg?react";
+export { default as CheckedIcon } from "./checked.svg?react";

@@ -24,9 +24,9 @@ const ProductGallery = ({ gallery, isLiked }: TProductGallery) => {
         className="mb-3 rounded-lg relative"
         autoplay
       >
-        {gallery?.map((image, index) => (
-          <SwiperSlide key={index}>
-            <img src={image} alt={`Slide ${index + 1}`} />
+        {gallery?.map((image, idx) => (
+          <SwiperSlide key={idx}>
+            <img src={image} alt={`Slide ${idx + 1}`} />
           </SwiperSlide>
         ))}
         <span className="absolute right-4 top-4 z-10 bg-white p-2 rounded-full shadow cursor-pointer">
@@ -41,12 +41,12 @@ const ProductGallery = ({ gallery, isLiked }: TProductGallery) => {
         watchSlidesProgress
         modules={[Thumbs]}
       >
-        {gallery?.map((image, index) => (
-          <SwiperSlide key={index}>
+        {gallery?.map((image, idx) => (
+          <SwiperSlide key={idx}>
             <img
               src={image}
               className="rounded-lg cursor-pointer"
-              alt={`Thumbnail ${index + 1}`}
+              alt={`Thumbnail ${idx + 1}`}
             />
           </SwiperSlide>
         ))}

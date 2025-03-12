@@ -5,5 +5,15 @@ import { type TModal } from "./modal.types";
 import { isString } from "./guards";
 import { type TLogin } from "./login.types";
 import { type TRegister } from "./register.types";
+import { type TDrawer } from "./drawer.types";
 
-export { TProduct, TCategory, TLoading, TModal, isString, TLogin, TRegister };
+export {
+  TProduct,
+  TCategory,
+  TLoading,
+  TModal,
+  isString,
+  TLogin,
+  TRegister,
+  TDrawer,
+};
