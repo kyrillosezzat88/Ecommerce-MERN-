@@ -1,13 +1,9 @@
+import { TLogin, TRegister } from "@types";
 import userModal from "../models/user";
 import bcrypt from "bcryptjs";
 import JWT from "jsonwebtoken";
 
-export const registerUser = async (userData: {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}) => {
+export const registerUser = async (userData: TRegister) => {
   // Check if the email already exists in the database.
   const user = await userModal.findOne({ email: userData.email });
   if (user) throw new Error("User already exists");
@@ -19,7 +15,7 @@ export const registerUser = async (userData: {
   return newUser;
 };
 
-export const loginUser = async (email: string, password: string) => {
+export const loginUser = async ({ email, password }: TLogin) => {
   const user = await userModal.findOne({ email });
   if (!user) throw new Error("email or password is incorrect");
 

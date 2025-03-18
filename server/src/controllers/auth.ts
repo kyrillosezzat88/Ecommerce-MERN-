@@ -20,7 +20,10 @@ const login = async (req: Request, res: Response) => {
   if (!data.success) return handleError(res, 400, data.error.flatten());
 
   try {
-    const result = await loginUser(data.data.email, data.data.password);
+    const result = await loginUser({
+      email: data.data.email,
+      password: data.data.password,
+    });
     return res.status(200).json({
       data: result.user,
       token: result.token,
