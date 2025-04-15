@@ -20,6 +20,7 @@
       "@controllers/*" : ["controllers/*"],
       "@models/*" : ["models/*"],
       "@middlewares/*" : ["middlewares/*"],
+      "@middlewares" : ["middlewares/index"],
       "@types" : ["types/index"],
       "@validations" : ["validations/index"],
       "@services/*" : ["services/*"],

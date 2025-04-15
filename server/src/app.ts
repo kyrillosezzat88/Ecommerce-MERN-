@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import userRoutes from "./routes/user";
 import categoryRoutes from "@routes/category";
+import productRoutes from "@routes/product";
 
 const app = express();
 app.use(cors());
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 //routes
 app.use(`${BaseURL}/auth`, userRoutes);
 app.use(`${BaseURL}/category`, categoryRoutes);
+app.use(`${BaseURL}/product`, productRoutes);
 
 const port = process.env.PORT || 5000;
 

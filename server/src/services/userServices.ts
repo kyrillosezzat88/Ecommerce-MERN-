@@ -23,7 +23,7 @@ export const loginUser = async ({ email, password }: TLogin) => {
   if (!isPasswordValid) throw new Error("Invalid password");
 
   const token = JWT.sign(
-    { id: user._id, email: user.email },
+    { userId: user._id, email: user.email, isAdmin: user.isAdmin },
     process.env.JWT_SECRET as string,
     { expiresIn: "1h" }
   );

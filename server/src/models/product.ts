@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+import { TProduct } from "@types";
+import mongoose, { Document } from "mongoose";
 
 const productModal = new mongoose.Schema(
   {
@@ -33,6 +34,7 @@ const productModal = new mongoose.Schema(
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "category",
+      required: true,
     },
     mainImage: {
       type: String,
@@ -44,7 +46,7 @@ const productModal = new mongoose.Schema(
         default: "",
       },
     ],
-    Stock: {
+    stock: {
       type: Number,
       required: true,
       min: [0, "Stock cannot be negative"],
@@ -53,9 +55,6 @@ const productModal = new mongoose.Schema(
     sku: {
       type: String,
       required: true,
-    },
-    unit: {
-      type: String,
     },
     tags: [
       {
@@ -92,4 +91,4 @@ const productModal = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Product", productModal);
+export default mongoose.model<TProduct & Document>("Product", productModal);
