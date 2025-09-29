@@ -22,7 +22,6 @@ const Product = memo((product: TProduct) => {
     setOpenProductModal,
     addToWishlistHandler,
     wishlistLoading,
-    wishlistError,
     compareHandler,
     compareLoading,
     isProductInCompare,
@@ -36,7 +35,7 @@ const Product = memo((product: TProduct) => {
         ModalContent={<ProductModal {...product} />}
         size="lg"
       />
-      <div className="flex flex-col gap-3">
+      <NavLink to={`/products/${id}`} className="flex flex-col gap-3">
         <div className="relative cursor-pointer group overflow-hidden rounded-2xl">
           <img
             src={mainImage}
@@ -59,20 +58,31 @@ const Product = memo((product: TProduct) => {
             <Button
               text="Add To Cart"
               className="btn btn-secondary rounded-full"
-              onClick={() => addToCartHandler(id, 1, name)}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                addToCartHandler(id, 1, name);
+              }}
               loading={cartLoading}
             />
             <Button
               text="Quick view"
               className="btn btn-secondary rounded-full"
-              onClick={openProductModalHandler}
+              onClick={(e) => {
+                e.preventDefault();
+                openProductModalHandler(e);
+              }}
             />
           </div>
           <div className="flex flex-col gap-2 absolute -right-10 top-3 transition-all duration-300 group-hover:right-3">
             <Button
               text={isLiked ? <HeartSolidIcon /> : <HeartIcon />}
               className="btn-circle text-sm [&>svg]:w-4 w-auto px-2 py-1"
-              onClick={() => addToWishlistHandler(id, name)}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                addToWishlistHandler(id, name);
+              }}
               loading={wishlistLoading === "pending"}
               loadingText={false}
             />
@@ -81,7 +91,11 @@ const Product = memo((product: TProduct) => {
               loading={compareLoading}
               loadingText={false}
               className="btn-circle text-sm [&>svg]:w-4 w-auto px-2 py-1"
-              onClick={() => compareHandler(id, name)}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                compareHandler(id, name);
+              }}
             />
           </div>
         </div>
@@ -95,7 +109,7 @@ const Product = memo((product: TProduct) => {
             -22%
           </span>
         </div>
-      </div>
+      </NavLink>
     </>
   );
 });

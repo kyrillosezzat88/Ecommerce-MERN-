@@ -33,7 +33,7 @@ const ProductQuantity = ({
   };
 
   const decrementQuantity = () => {
-    setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
     if (type === "cartItem" && quantityHandler) {
       quantityHandler("decrement");
     }

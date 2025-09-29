@@ -1,0 +1,152 @@
+{
+  "users": [],
+  "categories": [
+    {
+      "id": 1,
+      "title": "men",
+      "prefix": "men",
+      "img": "https://cdn-eu.dynamicyield.com/api/9876644/images/cfb357649428__hp-w12-22032022-h_m-men.jpg"
+    },
+    {
+      "id": 2,
+      "title": "women",
+      "prefix": "women",
+      "img": "https://cdn-eu.dynamicyield.com/api/9876644/images/30d354267a09b__hp-w12-22032022-h_m-women_dresses.jpg"
+    },
+    {
+      "id": 3,
+      "title": "kids",
+      "prefix": "kids",
+      "img": "https://cdn-eu.dynamicyield.com/api/9876644/images/37d243d334c63__hp-w12-22032022-h_m-kids1.jpg"
+    },
+    {
+      "id": 4,
+      "title": "baby",
+      "prefix": "baby",
+      "img": "https://cdn-eu.dynamicyield.com/api/9876644/images/28948d47ae6e8__h_m-w39-28092022-4066c-1x1.jpg"
+    },
+    {
+      "id": 5,
+      "title": "sport",
+      "prefix": "sport",
+      "img": "https://cdn-eu.dynamicyield.com/api/9876644/images/1dda9ae79a671__h_m-w40-06102022-7416b-1x1.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Men's Casual Shirt",
+      "description": "A comfortable and stylish casual shirt for men, perfect for everyday wear.",
+      "price": 29.99,
+      "cat_prefix": "men",
+      "mainImage": "https://guza-demo.vercel.app/assets/imgs/page/homepage2/product1.png",
+      "quantity": 15,
+      "max": 50,
+      "stock": 100,
+      "isLiked": true,
+      "gallery": [
+        "https://guza-demo.vercel.app/assets/imgs/page/homepage1/product1-hover.png",
+        "https://guza-demo.vercel.app/assets/imgs/page/homepage1/product1-hover.png"
+      ],
+      "rate": 4.7,
+      "comments": [
+        {
+          "userId": 101,
+          "comment": "Great fit and very comfortable!"
+        },
+        {
+          "userId": 102,
+          "comment": "The material is high quality."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Women's Summer Dress",
+      "description": "A lightweight and elegant summer dress, ideal for warm weather.",
+      "price": 39.99,
+      "cat_prefix": "women",
+      "mainImage": "https://guza-demo.vercel.app/assets/imgs/page/homepage2/product2.png",
+      "max": 30,
+      "stock": 50,
+      "isLiked": false,
+      "gallery": [
+        "https://guza-demo.vercel.app/assets/imgs/page/homepage1/product2-hover.png",
+        "https://guza-demo.vercel.app/assets/imgs/page/homepage1/product2-hover.png"
+      ],
+      "rate": 4.5,
+      "comments": [
+        {
+          "userId": 103,
+          "comment": "Love the design and color!"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Unisex Hoodie",
+      "description": "A cozy and warm hoodie suitable for both men and women.",
+      "price": 49.99,
+      "cat_prefix": "kids",
+      "mainImage": "https://guza-demo.vercel.app/assets/imgs/page/homepage2/product3.png",
+      "quantity": 10,
+      "max": 20,
+      "stock": 25,
+      "isLiked": true,
+      "gallery": [
+        "https://guza-demo.vercel.app/assets/imgs/page/homepage1/product1-hover.png",
+        "https://guza-demo.vercel.app/assets/imgs/page/homepage1/product1-hover.png"
+      ],
+      "rate": 4.8,
+      "comments": [
+        {
+          "userId": 104,
+          "comment": "Very warm and comfortable, perfect for winter."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Men's Jeans",
+      "description": "Classic denim jeans for men, durable and stylish.",
+      "price": 59.99,
+      "cat_prefix": "men",
+      "mainImage": "https://guza-demo.vercel.app/assets/imgs/page/homepage2/product4.png",
+      "quantity": 20,
+      "max": 40,
+      "stock": 60,
+      "isLiked": false,
+      "gallery": [
+        "https://guza-demo.vercel.app/assets/imgs/page/homepage1/product2-hover.png",
+        "https://guza-demo.vercel.app/assets/imgs/page/homepage1/product2-hover.png"
+      ],
+      "rate": 4.6,
+      "comments": [
+        {
+          "userId": 105,
+          "comment": "Great fit and high-quality denim."
+        }
+      ]
+    }
+  ],
+  "wishlist": [
+    {
+      "userId": 1,
+      "productId": 1,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "productId": 4,
+      "id": 2
+    }
+  ],
+  "compares": [
+    {
+      "userId": 1,
+      "productId": 4,
+      "id": 1
+    }
+  ],
+  "orders": []
+}

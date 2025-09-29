@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const actCompareToggle = createAsyncThunk(
-  "compare/actCompareToggle",
+  "compares/actCompareToggle",
   async (data: { id: number; name: string }, thunkApi) => {
     const { rejectWithValue } = thunkApi;
     const { id, name } = data;
@@ -12,7 +12,8 @@ const actCompareToggle = createAsyncThunk(
       const isRecordExist = await axios.get(
         `/compares?userId=1&productId=${id}`
       );
-      console.log({ isRecordExist });
+      console.log({ CompareisRecordExist: isRecordExist });
+
       if (isRecordExist.data.length > 0) {
         const CompareId = isRecordExist.data[0].id;
         await axios.delete(`/compares/${CompareId}`);

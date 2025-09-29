@@ -1,5 +1,5 @@
 import { MainLayout } from "@layouts/index";
-import { Home } from "@pages/index";
+import { Home, ProductDetails } from "@pages/index";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -10,6 +10,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/products/:productId",
+        element: <ProductDetails />,
       },
     ],
   },
