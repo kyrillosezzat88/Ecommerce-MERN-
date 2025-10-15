@@ -1,4 +1,3 @@
-import { StarSolidIcon } from "@assets/icons";
 import { Tabs } from "@components/common";
 import {
   ProductColors,
@@ -11,40 +10,43 @@ import {
   ProductReview,
   ProductWriteReview,
 } from "@components/e-commerce/productOptions";
-import { useAppSelector } from "@store/hooks";
-import { TProduct } from "@types";
-import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { LottieHandler } from "@components/feedback";
+import useProductDetails from "@hooks/useProductDetails";
+
 const ProductDetails = () => {
-  const { products } = useAppSelector((state) => state.products);
-  const { productId } = useParams();
-  const [product, setProduct] = useState<TProduct | null>(null);
-  const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
-  const [activeTab, setActiveTab] = useState("Description");
+  const {
+    productDetails,
+    loading,
+    error,
+    selectedQuantity,
+    setSelectedQuantity,
+    tabHandler,
+    activeTab,
+    ratingData,
+  } = useProductDetails();
 
-  useEffect(() => {
-    const product = products.find(
-      (product) => product.id === Number(productId)
-    );
-
-    setProduct(product || null);
-  }, [products, productId]);
-
-  const tabHandler = useCallback((tab: string) => {
-    setActiveTab(tab);
-  }, []);
-  const ratingData = [
-    { rate: 5, percentage: 60 },
-    { rate: 4, percentage: 25 },
-    { rate: 3, percentage: 10 },
-    { rate: 2, percentage: 3 },
-    { rate: 1, percentage: 2 },
-  ];
-  if (!product) {
-    return <div className="pt-20">Product not found</div>;
+  if (loading === "pending") {
+    return <LottieHandler type="loading" message="Loading product..." />;
   }
-  const { name, gallery, price, id, isLiked, description, rate, quantity } =
-    product;
+
+  if (!productDetails) {
+    return <LottieHandler type="NotFound" message="Product not found" />;
+  }
+
+  if (error) {
+    return (
+      <div className="pt-20">
+        <LottieHandler
+          type="invalid"
+          message={error}
+          ErrorClassName="text-red-500"
+        />
+      </div>
+    );
+  }
+
+  const { name, gallery, price, id, isLiked, description, rate } =
+    productDetails;
   return (
     <div className="pt-20">
       <div className="container">
@@ -64,7 +66,9 @@ const ProductDetails = () => {
                 quantity={selectedQuantity ?? 1}
                 setQuantity={setSelectedQuantity}
               />
-              <span className="text-2xl font-bold ">${price?.toFixed(2)}</span>
+              <span className="text-2xl font-bold ">
+                ${(price * selectedQuantity)?.toFixed(2)}
+              </span>
             </div>
             <ProductActions id={id} name={name} quantity={selectedQuantity} />
           </div>

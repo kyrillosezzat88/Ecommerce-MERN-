@@ -3,9 +3,18 @@ import { useField } from "formik";
 interface TInput extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   name: string;
+  TagName?: React.ElementType;
+  containerClassName?: string;
 }
 
-const Input: React.FC<TInput> = ({ label, name, className, ...props }) => {
+const Input: React.FC<TInput> = ({
+  label,
+  name,
+  TagName = "input",
+  className,
+  containerClassName,
+  ...props
+}) => {
   const [field, meta] = useField(name);
 
   const validateInputClasses =
@@ -14,13 +23,13 @@ const Input: React.FC<TInput> = ({ label, name, className, ...props }) => {
       : "border-gray-300 focus:border-primary";
 
   return (
-    <div className="flex flex-col gap-1 mb-4">
+    <div className={`flex flex-col gap-1 ${containerClassName}`}>
       {label && (
         <label htmlFor={name} className="font-medium mb-1">
           {label}
         </label>
       )}
-      <input
+      <TagName
         {...field}
         {...props}
         id={name}

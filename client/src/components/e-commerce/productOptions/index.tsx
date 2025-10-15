@@ -6,4 +6,5 @@ export { default as ProductActions } from "./ProductActions";
 export { default as ProductRate } from "./ProductRate";
 export { default as ProductRateBarList } from "./ProductRateBarList";
 export { default as ProductReview } from "./ProductReview";
+export { default as RatingProduct } from "./RatingProduct";
 export { default as ProductWriteReview } from "./ProductWriteReview";
