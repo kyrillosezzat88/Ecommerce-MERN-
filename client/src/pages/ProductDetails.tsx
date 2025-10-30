@@ -51,7 +51,7 @@ const ProductDetails = () => {
     <div className="pt-20">
       <div className="container">
         <div className="flex gap-6 h-full flex-wrap md:flex-nowrap relative">
-          <div className="w-full md:w-1/2 sticky top-0">
+          <div className="w-full md:w-1/2 md:sticky top-0">
             <ProductGallery gallery={gallery} isLiked={isLiked} />
           </div>
           <div className="w-full md:w-1/2 overflow-auto">
@@ -95,7 +95,7 @@ const ProductDetails = () => {
           </div>
         </div>
         {/* Reviews Section */}
-        <div className="mt-6 flex gap-14 p-4">
+        <div className="mt-6 flex flex-wrap md:flex-nowrap gap-14 p-4">
           <div className="w-full md:w-1/3">
             <h3 className="text-4xl ">Customer Reviews</h3>
             <div className="flex items-center gap-2 mt-3">

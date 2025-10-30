@@ -16,7 +16,7 @@ type TProductGallery = {
 const ProductGallery = ({ gallery, isLiked }: TProductGallery) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
-    <div className="sticky top-0">
+    <div className="md:sticky top-0">
       <Swiper
         spaceBetween={10}
         thumbs={{ swiper: thumbsSwiper }}

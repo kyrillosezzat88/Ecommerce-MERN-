@@ -129,24 +129,7 @@
       ]
     }
   ],
-  "wishlist": [
-    {
-      "userId": 1,
-      "productId": 1,
-      "id": 1
-    },
-    {
-      "userId": 1,
-      "productId": 4,
-      "id": 2
-    }
-  ],
-  "compares": [
-    {
-      "userId": 1,
-      "productId": 4,
-      "id": 1
-    }
-  ],
+  "wishlist": [],
+  "compares": [],
   "orders": []
 }

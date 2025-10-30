@@ -11,6 +11,7 @@ export { default as ProductModal } from "./modals/ProductModal";
 
 export { default as Product } from "./product/Product";
 export { default as GridList } from "./gridList/GridList";
+export { default as SideFilters } from "./sideFilters/SideFilters";
 
 // Auth components
 export { default as Login } from "./login/Login";

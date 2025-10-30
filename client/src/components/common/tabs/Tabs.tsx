@@ -8,8 +8,8 @@ type TTabs = {
 
 const Tabs = memo(({ tabs, tabHandler, activeTab }: TTabs) => {
   return (
-    <div className="flex justify-center mb-6">
-      <div className="flex items-center gap-4 justify-center border bg-gray-100 border-gray-100 px-6 py-3 rounded-full">
+    <div className="flex justify-center my-10">
+      <div className="flex items-center flex-wrap md:flex-nowrap gap-4 justify-center border bg-gray-100 border-gray-100 px-6 py-3 rounded-full">
         {tabs.map((tab, idx) => (
           <span
             key={idx}
