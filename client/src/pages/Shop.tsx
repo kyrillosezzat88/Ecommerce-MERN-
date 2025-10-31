@@ -1,8 +1,15 @@
-import { useState } from "react";
-import { SideFilters } from "@components/e-commerce";
+import { useEffect, useState } from "react";
+import { GridList, Product, SideFilters } from "@components/e-commerce";
 import { TFilterState, TFilterOptions } from "@types";
+import { Loading } from "@components/feedback";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { actGetProducts } from "@store/products/productsSlice";
 
 const Shop = () => {
+  const dispatch = useAppDispatch();
+  const { products, loading, error } = useAppSelector(
+    (state) => state.products
+  );
   // Mock data for demonstration
   const filterOptions: TFilterOptions = {
     categories: [
@@ -43,6 +50,10 @@ const Shop = () => {
     console.log("Filters changed:", newFilters);
   };
 
+  useEffect(() => {
+    dispatch(actGetProducts(null));
+  }, [dispatch]);
+
   return (
     <section>
       <div className="container">
@@ -54,7 +65,15 @@ const Shop = () => {
               options={filterOptions}
             />
           </div>
-          <div className="w-full md:w-3/4">products</div>
+          <div className="w-full md:w-3/4">
+            <Loading status={loading} error={error} type="product">
+              <GridList
+                records={products}
+                renderItems={(record) => <Product {...record} />}
+                className="grid grid-cols-1 md:grid-cols-3 gap-10"
+              />
+            </Loading>
+          </div>
         </div>
       </div>
     </section>

@@ -35,7 +35,10 @@ const Product = memo((product: TProduct) => {
         ModalContent={<ProductModal {...product} />}
         size="lg"
       />
-      <NavLink to={`/products/${id}`} className="flex flex-col gap-3">
+      <NavLink
+        to={`/products/${id}`}
+        className="flex flex-col gap-3 shadow rounded-2xl"
+      >
         <div className="relative cursor-pointer group overflow-hidden rounded-2xl">
           <img
             src={mainImage}
@@ -99,15 +102,17 @@ const Product = memo((product: TProduct) => {
             />
           </div>
         </div>
-        <NavLink to={`/products/${id}`}>
-          <h2 className="font-semibold">{name}</h2>
-        </NavLink>
-        <div className="flex items-center gap-4">
-          <span>${price}</span>
-          <span className="text-sm text-gray-400 line-through">$36</span>
-          <span className="bg-primary text-white text-sm px-3 py-1 rounded-full">
-            -22%
-          </span>
+        <div className="p-6">
+          <NavLink to={`/products/${id}`}>
+            <h2 className="font-semibold">{name}</h2>
+          </NavLink>
+          <div className="flex items-center gap-4">
+            <span>${price}</span>
+            <span className="text-sm text-gray-400 line-through">$36</span>
+            <span className="bg-primary text-white text-sm px-3 py-1 rounded-full">
+              -22%
+            </span>
+          </div>
         </div>
       </NavLink>
     </>
