@@ -1,6 +1,7 @@
 import { Button } from "@components/form";
 import { TProduct } from "@types";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 type TCartSubTotal = {
   products: TProduct[];
@@ -22,7 +23,9 @@ const SubTotal = ({ products }: TCartSubTotal) => {
         <span className="font-semibold">SubTotal</span>
         <span>{cartSubtotal.toFixed(2)} EG</span>
       </div>
-      <Button text="View Cart" className="btn btn-primary" />
+      <NavLink to="/cart" className="w-full">
+        <Button text="View Cart" className="btn btn-primary w-full" />
+      </NavLink>
       <Button text="Checkout" className="btn btn-secondary" />
     </>
   );

@@ -14,3 +14,6 @@ export { default as ReturnIcon } from "./return-box.svg?react";
 export { default as GuaranteeIcon } from "./correct.svg?react";
 export { default as ShippingIcon } from "./shipping.svg?react";
 export { default as CheckedIcon } from "./checked.svg?react";
+export { default as PlusIcon } from "./Plus.svg?react";
+export { default as MinusIcon } from "./Minus.svg?react";
+export { default as TrashIcon } from "./Trash.svg?react";

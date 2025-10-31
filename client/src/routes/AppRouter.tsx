@@ -1,5 +1,5 @@
 import { BreadCrumbLayout, MainLayout } from "@layouts/index";
-import { Home, ProductDetails, Shop } from "@pages/index";
+import { Cart, Home, ProductDetails, Shop } from "@pages/index";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -32,6 +32,25 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Shop />,
+      },
+    ],
+  },
+  {
+    path: "/cart",
+    element: (
+      <BreadCrumbLayout
+        title="Cart"
+        links={[
+          { title: "Home", link: "/" },
+          { title: "Shop", link: "/shop" },
+          { title: "Cart", link: null },
+        ]}
+      />
+    ),
+    children: [
+      {
+        index: true,
+        element: <Cart />,
       },
     ],
   },

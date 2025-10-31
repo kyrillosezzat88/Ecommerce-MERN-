@@ -1,8 +1,12 @@
-import { addToCart } from "@store/cart/CartSlice";
+import {
+  addToCart,
+  cartItemChangeQuantity,
+  cartItemRemove,
+} from "@store/cart/CartSlice";
 import { actCompareToggle } from "@store/compare/compareSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actWishlistToggle } from "@store/wishlist/wishlistSlice";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { toast } from "react-toastify";
 
 const useProduct = () => {
@@ -48,6 +52,18 @@ const useProduct = () => {
     return items.includes(id);
   };
 
+  const quantityHandler = useCallback(
+    (type: string, id: number, quantity: number = 1) => {
+      console.log("useProduct quantityHandler:", type, id, quantity);
+      dispatch(cartItemChangeQuantity({ type, id, quantity }));
+    },
+    [dispatch]
+  );
+
+  const handleRemoveItem = (id: number) => {
+    dispatch(cartItemRemove(id));
+  };
+
   return {
     cartLoading,
     openProductModal,
@@ -60,6 +76,8 @@ const useProduct = () => {
     compareHandler,
     compareLoading,
     isProductInCompare,
+    quantityHandler,
+    handleRemoveItem,
   };
 };
 

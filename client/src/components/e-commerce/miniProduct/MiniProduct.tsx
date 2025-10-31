@@ -1,33 +1,28 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { Quantity } from "@components/e-commerce";
 import { Button } from "@components/form";
 import { TProduct } from "@types";
 import { useAppDispatch } from "@store/hooks";
-import { cartItemChangeQuantity, cartItemRemove } from "@store/cart/CartSlice";
+import { cartItemRemove } from "@store/cart/CartSlice";
 import { actWishlistToggle } from "@store/wishlist/wishlistSlice";
+import useProduct from "@hooks/useProduct";
 
 type TMiniProduct = {
   type: "cart" | "wishlist";
-  data: TProduct; // Make data optional
+  data: TProduct;
 };
 
 const MiniProduct = ({ type, data }: TMiniProduct) => {
   const { id, name, price } = data;
   const [quantity, setQuantity] = useState(0);
   const dispatch = useAppDispatch();
+  const { quantityHandler, handleRemoveItem } = useProduct();
 
   useEffect(() => {
     if (data && data.quantity) {
       setQuantity(data.quantity);
     }
   }, [data]);
-
-  const quantityHandler = useCallback(
-    (type: string, quantity: number = 1) => {
-      dispatch(cartItemChangeQuantity({ type, id, quantity }));
-    },
-    [dispatch, id]
-  );
 
   const renderPriceInfo = () => (
     <p>
@@ -42,7 +37,9 @@ const MiniProduct = ({ type, data }: TMiniProduct) => {
         <Quantity
           quantity={quantity}
           setQuantity={setQuantity}
-          quantityHandler={quantityHandler}
+          quantityHandler={(type, qty) =>
+            quantityHandler(type, id, qty ?? quantity)
+          }
         />
       </div>
       {renderPriceInfo()}
@@ -53,7 +50,7 @@ const MiniProduct = ({ type, data }: TMiniProduct) => {
       <Button
         text="Remove"
         className="btn btn-danger mt-4 w-full"
-        onClick={() => dispatch(cartItemRemove(id))}
+        onClick={() => handleRemoveItem(id)}
       />
     </div>
   );

@@ -4,7 +4,7 @@ type TQuantity = {
   quantity: number;
   setQuantity: (value: number | ((prev: number) => number)) => void;
   className?: string;
-  quantityHandler?: (type: string, quantity?: number) => void;
+  quantityHandler?: (type: string | null, quantity?: number) => void;
   type?: "product" | "cartItem";
 };
 
@@ -20,7 +20,7 @@ const ProductQuantity = ({
     if (!isNaN(value) && value >= 0) {
       setQuantity(value);
       if (type === "cartItem" && quantityHandler) {
-        quantityHandler(_, value);
+        quantityHandler(null, value);
       }
     }
   };

@@ -8,6 +8,7 @@ export { default as Category } from "./category/Category";
 // products compoquant
 export { default as Products } from "./products/Products";
 export { default as ProductModal } from "./modals/ProductModal";
+export { default as ProductCard } from "./cartProduct/CartProduct";
 
 export { default as Product } from "./product/Product";
 export { default as GridList } from "./gridList/GridList";
