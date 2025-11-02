@@ -9,3 +9,4 @@ export { default as Tabs } from "./tabs/Tabs";
 export { default as Modal } from "./modal/Modal";
 export { default as Banner } from "./banner/Banner";
 export { default as BreadCrumb } from "./breadCrumb/BreadCrumb";
+export { default as EmptyCart } from "./emptyCart/EmptyCart";

@@ -5,8 +5,9 @@ import { NavLink } from "react-router-dom";
 
 type TCartSubTotal = {
   products: TProduct[];
+  setIsDrawerOpen: (isOpen: boolean) => void;
 };
-const SubTotal = ({ products }: TCartSubTotal) => {
+const SubTotal = ({ products, setIsDrawerOpen }: TCartSubTotal) => {
   const [cartSubtotal, setCartSubTotal] = useState(0);
   useEffect(() => {
     setCartSubTotal(
@@ -24,9 +25,19 @@ const SubTotal = ({ products }: TCartSubTotal) => {
         <span>{cartSubtotal.toFixed(2)} EG</span>
       </div>
       <NavLink to="/cart" className="w-full">
-        <Button text="View Cart" className="btn btn-primary w-full" />
+        <Button
+          text="View Cart"
+          className="btn btn-primary w-full"
+          onClick={() => setIsDrawerOpen(false)}
+        />
       </NavLink>
-      <Button text="Checkout" className="btn btn-secondary" />
+      <NavLink to="/checkout" className="w-full">
+        <Button
+          text="Checkout"
+          className="btn btn-secondary w-full"
+          onClick={() => setIsDrawerOpen(false)}
+        />
+      </NavLink>
     </>
   );
 };

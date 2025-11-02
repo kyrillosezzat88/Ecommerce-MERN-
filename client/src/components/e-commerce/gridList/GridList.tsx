@@ -9,7 +9,7 @@ const GridList = <T,>({
   records,
   renderItems,
   emptyMessage,
-  className = "grid grid-cols-1 md:grid-cols-4",
+  className = "grid grid-cols-1 md:grid-cols-4 gap-4",
 }: TGridList<T>) => {
   if (records.length) {
     return (

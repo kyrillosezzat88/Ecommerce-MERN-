@@ -1,4 +1,4 @@
-import { Drawer } from "@components/common";
+import { Drawer, EmptyCart } from "@components/common";
 import { MiniProduct, SubTotal } from "@components/e-commerce";
 import { Loading } from "@components/feedback";
 import { getProductsFullInfo } from "@store/cart/CartSlice";
@@ -34,10 +34,13 @@ const CartDrawer = ({ isOpen, setIsDrawerOpen }: TDrawer) => {
         {productList.length ? (
           <div className="flex flex-col gap-4">
             {productList}
-            <SubTotal products={productsFullInfo} />
+            <SubTotal
+              products={productsFullInfo}
+              setIsDrawerOpen={setIsDrawerOpen}
+            />
           </div>
         ) : (
-          "there is no product"
+          <EmptyCart setIsDrawerOpen={setIsDrawerOpen} />
         )}
       </Loading>
     </Drawer>

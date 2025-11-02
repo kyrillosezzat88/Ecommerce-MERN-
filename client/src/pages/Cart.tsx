@@ -1,18 +1,12 @@
-import { useAppSelector, useAppDispatch } from "@store/hooks";
+import { useAppSelector } from "@store/hooks";
 import { Loading } from "@components/feedback";
-import { cartItemRemove } from "@store/cart/CartSlice";
-import { Link } from "react-router-dom";
-import { ProductCard, Quantity } from "@components/e-commerce";
+import { ProductCard } from "@components/e-commerce";
+import { EmptyCart } from "@components/common";
 
 const Cart = () => {
-  const dispatch = useAppDispatch();
   const { productsFullInfo, loading, error } = useAppSelector(
     (state) => state.cart
   );
-
-  const handleRemoveItem = (id: number) => {
-    dispatch(cartItemRemove(id));
-  };
 
   const calculateSubtotal = () => {
     return productsFullInfo.reduce((total, item) => {
@@ -56,25 +50,7 @@ const Cart = () => {
                   </div>
                 </div>
               ) : (
-                <div className="text-center py-12 bg-white rounded-lg shadow-md">
-                  <img
-                    src="/empty-cart.svg"
-                    alt="Empty Cart"
-                    className="w-48 h-48 mx-auto mb-6"
-                  />
-                  <h2 className="text-2xl font-medium text-gray-900 mb-2">
-                    Your cart is empty
-                  </h2>
-                  <p className="text-gray-500 mb-6">
-                    Looks like you haven't added anything to your cart yet.
-                  </p>
-                  <Link
-                    to="/shop"
-                    className="inline-block px-6 py-3 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors"
-                  >
-                    Continue Shopping
-                  </Link>
-                </div>
+                <EmptyCart />
               )}
             </Loading>
           </div>

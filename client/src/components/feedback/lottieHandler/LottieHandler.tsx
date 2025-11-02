@@ -2,11 +2,13 @@ import Lottie from "lottie-react";
 import loading from "@assets/lottieFiles/Loading_Dots.json";
 import invalid from "@assets/lottieFiles/Invalid.json";
 import NotFound from "@assets/lottieFiles/Error_404.json";
+import EmptyCart from "@assets/lottieFiles/empty_cart.json";
 
 const lottieFilesMap = {
   loading,
   invalid,
   NotFound,
+  EmptyCart,
 };
 
 type TProps = {

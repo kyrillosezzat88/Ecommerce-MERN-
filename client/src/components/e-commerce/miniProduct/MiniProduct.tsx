@@ -3,7 +3,6 @@ import { Quantity } from "@components/e-commerce";
 import { Button } from "@components/form";
 import { TProduct } from "@types";
 import { useAppDispatch } from "@store/hooks";
-import { cartItemRemove } from "@store/cart/CartSlice";
 import { actWishlistToggle } from "@store/wishlist/wishlistSlice";
 import useProduct from "@hooks/useProduct";
 
