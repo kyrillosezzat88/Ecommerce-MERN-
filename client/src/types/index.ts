@@ -12,6 +12,7 @@ import {
   type TFilterOptions,
   type TFilterSection,
 } from "./filter.types";
+import { type TOrder } from "./order";
 
 export {
   TProduct,
@@ -26,4 +27,5 @@ export {
   TFilterState,
   TFilterOptions,
   TFilterSection,
+  TOrder,
 };

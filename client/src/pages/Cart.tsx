@@ -2,17 +2,16 @@ import { useAppSelector } from "@store/hooks";
 import { Loading } from "@components/feedback";
 import { ProductCard } from "@components/e-commerce";
 import { EmptyCart } from "@components/common";
+import { Button } from "@components/form";
+import { useNavigate } from "react-router-dom";
+import { calculateSubtotal } from "@utils/calculation";
 
 const Cart = () => {
   const { productsFullInfo, loading, error } = useAppSelector(
     (state) => state.cart
   );
 
-  const calculateSubtotal = () => {
-    return productsFullInfo.reduce((total, item) => {
-      return total + item.price * (item.quantity || 1);
-    }, 0);
-  };
+  const navigate = useNavigate();
 
   return (
     <section className="py-20">
@@ -63,7 +62,7 @@ const Cart = () => {
                 <div className="flex justify-between text-gray-600">
                   <span>Subtotal</span>
                   <span className="tabular-nums">
-                    ${calculateSubtotal().toFixed(2)}
+                    ${calculateSubtotal(productsFullInfo).toFixed(2)}
                   </span>
                 </div>
                 <div className="flex justify-between text-gray-600">
@@ -74,17 +73,17 @@ const Cart = () => {
                   <div className="flex justify-between font-medium text-gray-900">
                     <span>Total</span>
                     <span className="tabular-nums">
-                      ${calculateSubtotal().toFixed(2)}
+                      ${calculateSubtotal(productsFullInfo).toFixed(2)}
                     </span>
                   </div>
                 </div>
               </div>
-              <button
-                className="w-full mt-6 px-6 py-3 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+              <Button
+                className=" btn btn-primary w-full mt-6 "
                 disabled={productsFullInfo.length === 0}
-              >
-                Proceed to Checkout
-              </button>
+                text="Proceed to Checkout"
+                onClick={() => navigate("/checkout")}
+              />
             </div>
           </div>
         </div>

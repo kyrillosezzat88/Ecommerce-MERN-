@@ -1,5 +1,5 @@
 .btn{
-    @apply px-4 py-2 rounded-sm cursor-pointer transition-all flex justify-center items-center;
+    @apply px-4 py-2 rounded-sm cursor-pointer transition-all flex justify-center items-center disabled:bg-gray-300 disabled:cursor-not-allowed;
 }
 .btn-primary{
     @apply bg-primary hover:bg-secondary text-white hover:text-primary; 

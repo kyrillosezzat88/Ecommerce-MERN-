@@ -39,6 +39,16 @@ const CartProduct = ({ product, type = "cart" }: TCartProduct) => {
             <p className="text-sm text-gray-500 line-clamp-2">
               {product.description}
             </p>
+            {type === "order" && (
+              <Quantity
+                className="mt-3 w-fit"
+                quantity={quantity}
+                setQuantity={setQuantity}
+                quantityHandler={(type, qty) =>
+                  quantityHandler(type, product.id, qty ?? quantity)
+                }
+              />
+            )}
           </div>
         </div>
       </div>
@@ -70,14 +80,16 @@ const CartProduct = ({ product, type = "cart" }: TCartProduct) => {
       </div>
 
       {/* Action */}
-      <div className="px-6 py-4 w-full md:w-[10%] flex md:justify-start">
-        <button
-          onClick={() => handleRemoveItem(product.id)}
-          className="text-red-500 hover:text-red-700 p-2 rounded-full hover:bg-red-50 transition-colors"
-        >
-          <TrashIcon />
-        </button>
-      </div>
+      {type === "cart" && (
+        <div className="px-6 py-4 w-full md:w-[10%] flex md:justify-start">
+          <button
+            onClick={() => handleRemoveItem(product.id)}
+            className="text-red-500 hover:text-red-700 p-2 rounded-full hover:bg-red-50 transition-colors"
+          >
+            <TrashIcon />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

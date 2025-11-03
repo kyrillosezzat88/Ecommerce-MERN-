@@ -17,10 +17,15 @@ const Input: React.FC<TInput> = ({
 }) => {
   const [field, meta] = useField(name);
 
-  const validateInputClasses =
-    meta.touched && meta.error
-      ? "border-red-500 focus:border-red-500"
-      : "border-gray-300 focus:border-primary";
+  const validateInputClasses = () => {
+    if (meta.touched && meta.error) {
+      return "border-red-500 focus:border-red-500";
+    } else if (meta.touched && !meta.error) {
+      return "border-green-500 focus:border-green-500";
+    } else {
+      return "border-gray-300 focus:border-primary";
+    }
+  };
 
   return (
     <div className={`flex flex-col gap-1 ${containerClassName}`}>
@@ -33,7 +38,7 @@ const Input: React.FC<TInput> = ({
         {...field}
         {...props}
         id={name}
-        className={`border ${validateInputClasses} p-2 rounded-md outline-none transition-all duration-300 ${className}`}
+        className={`border ${validateInputClasses()} p-2 rounded-md outline-none transition-all duration-300 ${className}`}
       />
       {meta.touched && meta.error && (
         <span className="text-red-500 font-semibold text-xs capitalize">

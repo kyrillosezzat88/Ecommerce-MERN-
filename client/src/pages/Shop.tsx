@@ -4,8 +4,11 @@ import { TFilterState, TFilterOptions } from "@types";
 import { Loading } from "@components/feedback";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actGetProducts } from "@store/products/productsSlice";
+import { MenuIcon } from "@assets/icons";
+import { Drawer } from "@components/common";
 
 const Shop = () => {
+  const [openFiltersDrawer, setOpenFiltersDrawer] = useState(false);
   const dispatch = useAppDispatch();
   const { products, loading, error } = useAppSelector(
     (state) => state.products
@@ -63,7 +66,25 @@ const Shop = () => {
               filters={filters}
               onFiltersChange={handleFiltersChange}
               options={filterOptions}
+              className="hidden md:block"
             />
+            <MenuIcon
+              className="md:hidden ml-auto my-2 text-5xl"
+              onClick={() => setOpenFiltersDrawer(true)}
+            />
+            <Drawer
+              isOpen={openFiltersDrawer}
+              setIsDrawerOpen={setOpenFiltersDrawer}
+              title="Filters"
+            >
+              <Loading status={loading} error={error} type="miniProduct">
+                <SideFilters
+                  filters={filters}
+                  onFiltersChange={handleFiltersChange}
+                  options={filterOptions}
+                />
+              </Loading>
+            </Drawer>
           </div>
           <div className="w-full md:w-3/4">
             <Loading status={loading} error={error} type="product">

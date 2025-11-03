@@ -38,7 +38,7 @@ const Quantity = ({
     <div
       className={`flex items-center gap-1 rounded-lg py-1 border border-gray-300 ${className}`}
     >
-      <button onClick={decrementQuantity} className={buttonClass}>
+      <button onClick={decrementQuantity} className={buttonClass} type="button">
         -
       </button>
       <input
@@ -48,7 +48,7 @@ const Quantity = ({
         onChange={handleQuantityChange}
         min="0"
       />
-      <button onClick={incrementQuantity} className={buttonClass}>
+      <button onClick={incrementQuantity} className={buttonClass} type="button">
         +
       </button>
     </div>
